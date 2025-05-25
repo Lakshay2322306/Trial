@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Translator</title>
 </head>
 <body>
-  <h1>Translate Text</h1>
+  <h1>Translate</h1>
   <textarea id="text" placeholder="Enter text"></textarea><br>
   <select id="lang">
     <option value="en">English</option>
     <option value="hi">Hindi</option>
     <option value="es">Spanish</option>
-    <!-- Add more languages here -->
-  </select><br><br>
-  <button onclick="translateText()">Translate</button>
-  <h2>Result</h2>
+  </select>
+  <button onclick="translate()">Translate</button>
+
+  <h2>Result:</h2>
   <p><strong>Original:</strong> <span id="original"></span></p>
   <p><strong>Translated:</strong> <span id="translated"></span></p>
   <p><strong>Detected Language:</strong> <span id="source"></span></p>
 
   <script>
-    async function translateText() {
+    async function translate() {
       const text = document.getElementById("text").value;
       const dest_lang = document.getElementById("lang").value;
 
-      const response = await fetch("https://trial-70xg.onrender.com", {
+      const res = await fetch("https://your-render-api-url/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, dest_lang })
       });
 
-      const data = await response.json();
+      const data = await res.json();
 
-      if (data.translated) {
+      if (data.error) {
+        document.getElementById("translated").textContent = "Error: " + data.error;
+      } else {
         document.getElementById("original").textContent = data.original;
         document.getElementById("translated").textContent = data.translated;
         document.getElementById("source").textContent = data.detected_source;
-      } else {
-        document.getElementById("translated").textContent = "Error: " + (data.error || "Unknown");
       }
     }
   </script>
