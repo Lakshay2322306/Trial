@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +25,9 @@
     </select>
     <button onclick="translateText()">Translate</button>
     <div class="result" id="result"></div>
-  </div>  <script>
+  </div>
+
+  <script>
     async function translateText() {
       const text = document.getElementById("text").value;
       const destLang = document.getElementById("destLang").value;
@@ -41,5 +44,6 @@
         resultDiv.innerHTML = `<strong>Original:</strong> ${data.original}<br><strong>Translated:</strong> ${data.translated}`;
       }
     }
-  </script></body>
+  </script>
+</body>
 </html>
