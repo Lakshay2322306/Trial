@@ -24,7 +24,7 @@
       const text = document.getElementById("text").value;
       const dest_lang = document.getElementById("lang").value;
 
-      const res = await fetch("https://trial-70xg.onrender.com", {
+      const res = await fetch("https://trial-70xg.onrender.com/translate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, dest_lang })
