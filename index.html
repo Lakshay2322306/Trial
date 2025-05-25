@@ -31,7 +31,7 @@
     async function translateText() {
       const text = document.getElementById("text").value;
       const destLang = document.getElementById("destLang").value;
-      const response = await fetch("https://your-render-api-url.onrender.com/translate", {
+      const response = await fetch("https://trial-70xg.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text, dest_lang: destLang })
